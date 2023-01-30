@@ -1,2 +1,4 @@
-alert('hello');
-console.log('1-1-1-1test')
+const userNames = ["Петрик Ольга Іванівна", "Гнатюк Петро Антонович", "Рудко Андрій Опанасович"];
+let initials;
+
+console.log(initials); // [ "Г.П.А.", "П.О.І.", "Р.А.О."]
