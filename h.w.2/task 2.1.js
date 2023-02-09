@@ -1,5 +1,5 @@
 'use strict'
-function durationBetweenDates(startDate, endDate, formatType){
+function durationBetweenDates(startDate = '09 Aug 2020', endDate = '02 Aug 2019', formatType = 'days'){
     const result =Math.abs(Date.parse(startDate) - Date.parse(endDate));
     switch (formatType){
         case 'seconds':
@@ -21,3 +21,4 @@ function durationBetweenDates(startDate, endDate, formatType){
 }
 durationBetweenDates('02 Aug 1985', '03 Aug 1985', 'seconds');
 durationBetweenDates('31 Jan 2022', '03 Feb 2021', 'days');
+durationBetweenDates();
