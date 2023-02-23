@@ -23,7 +23,7 @@ if (localStorage.getItem('themeStatus')){
 */
 function dateExchange (){
     let time = new Date();
-    time = ('0' + time.getDate()).slice(-2) + '-' + ('0' + (time.getMonth() + 1)).slice(-2) + '-' + time.getFullYear() + ' ' + time.getHours() + ':' + time.getMinutes() + ':' + time.getSeconds();
+    time = time.toLocaleString().split(',').join('');
     let btnText = btn.textContent[0].toLocaleLowerCase() + btn.textContent.slice(1);
     localStorage.setItem('statusDate', (`Last ${btnText}: ${time}`));
     dateText.textContent = localStorage.getItem('statusDate');
