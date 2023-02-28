@@ -33,22 +33,16 @@ function showPosts() {
         li.setAttribute('data-num', taskNum);
         li.innerHTML = task;
 
-        //створюю бокс для кнопок
-        const wrapper = document.createElement('div');
-        wrapper.classList.add('button-wrapper');
-        wrapper.innerHTML = '';
-        li.append(wrapper);
-
         const button = document.createElement('button');
         button.classList.add('remove-task');
         button.innerHTML = '';
-        wrapper.append(button);
+        li.append(button);
 
         //створюю бокс для редагування
         const editTask = document.createElement('i');
         editTask.classList.add('edit-task');
         editTask.innerHTML = '';
-        wrapper.append(editTask);
+        li.append(editTask);
         
         taskList.append(li);
         //збiльшую змiнну на кожному кроцi
@@ -76,26 +70,22 @@ function addTask(event) {
     
     li.innerHTML = value;
 
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('button-wrapper');
-    wrapper.innerHTML = '';
-    li.append(wrapper);
-
     const button = document.createElement('button');
     button.classList.add('remove-task');
     button.innerHTML = '';
-    wrapper.append(button);
+    li.append(button);
 
     //створюю бокс для редагування
     const editTask = document.createElement('i');
     editTask.classList.add('edit-task');
     editTask.innerHTML = '';
-    wrapper.append(editTask);
+    li.append(editTask);
     
     taskList.append(li);
 
     storeTasksInLocalStorage(value);
     taskInput.value = '';
+
 }
 
 function storeTasksInLocalStorage(task) {
@@ -108,6 +98,7 @@ function storeTasksInLocalStorage(task) {
     }
     tasks.push(task);
     
+
     localStorage.setItem('tasks', JSON.stringify(tasks));
 
 }
@@ -115,14 +106,14 @@ function storeTasksInLocalStorage(task) {
 function deleteTask(event) {
     if (event.target.classList.contains('remove-task')) {
         if(confirm('Ви впевнені що хочете видалити цей елемент?')) {
-            event.target.parentElement.parentElement.remove();
-            removeTaskFromLocalStorage(event.target.parentElement.parentElement);
+            event.target.parentElement.remove();
+            removeTaskFromLocalStorage(event.target.parentElement);
         }
     }
 
     //виклик редагування
     if (event.target.classList.contains('edit-task')) {
-        editTask(event.target.parentElement.parentElement);
+        editTask(event.target.parentElement);
     }
 }
 
@@ -150,6 +141,13 @@ function removeTaskFromLocalStorage(taskElement) {
 
     tasks.splice(+taskElement.dataset.num, 1);
     const filteredTasks = tasks;
+    // const filteredTasks = tasks.filter((task) => {
+    //     if(tasks.indexOf(task) !== +taskElement.dataset.test) {
+    //         console.log("index" + tasks.indexOf(task));
+    //         console.log(+taskElement.dataset.test)
+    //         return task
+    //     }
+    // })
 
     localStorage.setItem('tasks', JSON.stringify(filteredTasks));
     taskList.innerHTML = '';
@@ -175,9 +173,11 @@ function filterTasks(event) {
         const itemValue = item.firstChild.textContent.toLowerCase();
         
         if (itemValue.includes(searchQuery)) {
+            // item.style.display = 'list-item';
             item.classList.add('list-item');
             item.classList.remove('list-none');
         } else {
+            // item.style.display = 'none';
             item.classList.remove('list-item');
             item.classList.add('list-none')
         }
