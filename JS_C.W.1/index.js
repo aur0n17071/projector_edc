@@ -14,6 +14,7 @@ const themeBtn = document.querySelector('.theme-btn');
 const clearBtn = document.querySelector('.prev-result__clear-btn');
 const theme = document.querySelector('.theme');
 
+
 document.addEventListener('DOMContentLoaded', tableDraw);
 inputOne.addEventListener('focus', disableInput);
 inputOne.addEventListener('blur', enableDateInput);
