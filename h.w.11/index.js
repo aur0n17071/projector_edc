@@ -1,21 +1,3 @@
-
-// const input = document.querySelector('.input');
-// const btn = document.querySelector('.btn');
-
-// btn.addEventListener('click',addTextValue);
-
-
-// const emoticArr = ['🐮', '🐯', '🐼', '🐨', '🐵', '🐷', '🐸'];
-
-// input.value = emoticArr[Math.abs(Math.round(Math.random() * (6 + 1) - 0.5))];
-
-
-// function addTextValue(){
-//     outText = input.value;
-//     input.value
-// }
-// let outText;
-
 import {array }  from "./array.js";
 import {set} from "./set.js";
 
